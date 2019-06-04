@@ -13,9 +13,9 @@ docker run -p 8082:8080 -p 50000:50000 \
 jenkins/jenkins:lts-alpine
 ```
 
-3: Tyk-Git installed locally
+3: Tyk-Sync installed locally
 
-`go install -u github.com/TykTechnologies/tyk-git`
+`go install -u github.com/TykTechnologies/tyk-sync`
 
 4: A local / remote development Tyk installation
 
@@ -56,7 +56,7 @@ git checkout master && git remote update && git pull
 publish possible changes to local dev environment
 
 ```
-tyk-git publish -d http://localdash:3000 -o LOCAL_ORG_ID -s LOCAL_SECRET git@github.com:foo/bar.git -b refs/heads/master
+tyk-sync publish -d http://localdash:3000 -o LOCAL_ORG_ID -s LOCAL_SECRET git@github.com:foo/bar.git -b refs/heads/master
 ```
 
 checkout to new branch
@@ -68,7 +68,7 @@ git checkout -b api/my-foo
 design apis in local dev installation and dump your local dev env with your own changes to disk
 
 ```
-tyk-git dump -d http://localdash:3000 -s LOCAL_SECRET
+tyk-sync dump -d http://localdash:3000 -s LOCAL_SECRET
 ```
 
 commit to git and push
@@ -119,5 +119,5 @@ so the tests pass - everything is green - woo hoo
 open a pull request in github, merge to master, then go back to jenkins to trigger the build if not
 automatic
 
-because we are in master branch - jenkins will use tyk-git to sync the master branch with production
+because we are in master branch - jenkins will use tyk-sync to sync the master branch with production
 
