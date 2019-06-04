@@ -32,9 +32,9 @@ pipeline {
             }
             steps {
                 echo "Deploying, because we are on ${env.BRANCH_NAME}"
-                sh "wget https://github.com/asoorm/tyk-git/releases/download/0.1-alpha/tyk-git"
+                sh "wget https://github.com/TykTechnologies/tyk-sync"
                 sh "chmod +x tyk-git"
-                sh "./tyk-git sync -d ${env.TYK_DASH_URL} -o ${env.TYK_ORG_ID} -s ${env.TYK_DASH_SECRET} ${env.WORKSPACE}/.git -b refs/heads/${env.BRANCH_NAME}"
+                sh "./tyk-sync sync -d ${env.TYK_DASH_URL} -o ${env.TYK_ORG_ID} -s ${env.TYK_DASH_SECRET} ${env.WORKSPACE}/.git -b refs/heads/${env.BRANCH_NAME}"
             }
         }
     }
